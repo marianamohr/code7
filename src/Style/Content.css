@@ -1,0 +1,16 @@
+.content {
+display: flex;
+align-items: flex-start;
+
+padding: 15px;
+}
+
+.list-clients {
+  list-style-type: none;
+
+}
+
+.form {
+  border: 1px solid black;
+  margin-left: 60px;
+}
