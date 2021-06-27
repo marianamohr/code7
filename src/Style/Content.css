@@ -14,3 +14,21 @@ padding: 15px;
   border: 1px solid black;
   margin-left: 60px;
 }
+
+.divida {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.box-debit-client {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.name-debtor {
+  margin: 15px;
+}
+
+.debit {
+  margin: 15px;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Style/Login.css';
 import { connect } from 'react-redux';
-import { actionFetchUsers } from '../actions/index';
+import { actionFetchUsers, actionGetDebits } from '../actions/index';
 import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
@@ -24,9 +24,10 @@ class Login extends React.Component {
 
     async handleSubmit(e) {
         e.preventDefault();
-        const { saveUser } = this.props;
+        const { saveUser,  getDebits } = this.props;
         const { nome, email } = this.state;
         saveUser(nome, email);
+        getDebits();
         this.setState({ redirect: true });
     }
 
@@ -77,6 +78,7 @@ class Login extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
     saveUser: (nome, email) => dispatch(actionFetchUsers(nome, email)),
+    getDebits: () => dispatch(actionGetDebits()),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

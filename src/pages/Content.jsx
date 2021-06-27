@@ -1,38 +1,15 @@
 import React, { Component } from 'react'
 import Header from '../components/Header';
+import Form from '../components/Form';
+import Debits from '../components/Debits';
 import { connect } from 'react-redux';
-import '../Style/Content.css';
-import { actionSaveDebit } from '../actions/index';
+import { actionNewDebit, actionSendDebtor } from '../actions/index';
+
 
 class Content extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            client: '',
-            motivo: '',
-            valor: 0,
-        }
-    }
-
-    handleChange({ target }) {
-        const { value, name } = target;
-        if (name === 'client') {
-            console.log(value[0]);
-            const newValue = value[0];
-            this.setState({
-                [name]: newValue,
-            });
-        } else {
-
-            this.setState({
-                [name]: value,
-            });
-        }
-    }
 
     render() {
-        const { listUsers, saveDebit, listDebits } = this.props;
-        const { client, motivo, valor } = this.state;
+        const { listUsers, listDebits, newDebit, newDebitButton, sendDebtor } = this.props;
         return (
             <main>
                 <Header />
@@ -40,65 +17,37 @@ class Content extends Component {
                     <div className="box-list-clients">
                         <h1>Devedores</h1>
                         <ul className="list-clients">
-                           {listDebits.map(debit=> <li key={debit.idUsuario}>{debit.idUsuario}</li>)}
-                           {listDebits.map(debit=> <li key={debit.idUsuario}>{debit.idUsuario}</li>)}
+
+                            {listUsers.map(user => {
+
+                                let thisDebists = [];
+                                listDebits.forEach((debit) => {
+                                    if (user.id === debit.idUsuario) {
+                                        thisDebists.push(debit);
+                                    }
+                                })
+
+                                return <div
+                                    className="divida"
+                                    onClick={() => {
+                                        sendDebtor(user.id);
+                                    }}>
+                                    <h2>
+                                        {user.name}
+                                    </h2>
+                                    {/* <div>
+                                        {thisDebists.map((debit) => <h5>{`Motivo: ${debit.motivo} Valor: ${debit.valor}`}</h5>)}
+                                    </div> */}
+                                </div>
+                            }
+                            )}
                         </ul>
                     </div>
-                    <div className="form">
-                        <h1>Form</h1>
-                        <form>
-                            <label>
-                                Cliente:
-                           <select
-                                    name="client"
-                                    id="client"
-                                    value={client}
-                                    onChange={(event) => {
-                                        this.handleChange(event);
-                                    }}
-                                >
-                                    {listUsers.map(user => <option key={user.id}>{`${user.id} - ${user.name}`}</option>)}
-                                </select>
-                            </label>
-                            <label>
-                                Motivo:
-                                <input
-                                    type="text"
-                                    name="motivo"
-                                    id="motivo"
-                                    value={motivo}
-                                    onChange={(event) => {
-                                        this.handleChange(event);
-                                    }}
-                                />
-                            </label>
-                            <label>
-                                Valor:
-                                <input
-                                    type="text"
-                                    name="valor"
-                                    id="valor"
-                                    value={valor}
-                                    onChange={(event) => {
-                                        this.handleChange(event);
-                                    }}
-                                />
-                            </label>
-                            <button
-                                type="button"
-                                onClick={() => {
-                                   // const { } = this.state;
-                                    const debit = {
-                                        idUsuario: 2,
-                                        motivo: 'Parcela 3 carro',
-                                        valor: '199.99'
-                                    }
-                                    saveDebit(debit)
-                                }}
-                            >Salvar</button>
-                        </form>
-                    </div>
+                    {newDebit ? <Form /> : <Debits />}
                 </div>
+                <button
+                    type="button"
+                    onClick={() => { newDebitButton() }}>Nova</button>
             </main >
         )
     }
@@ -106,9 +55,11 @@ class Content extends Component {
 const mapStateToProps = (state) => ({
     listUsers: state.user.listUsers,
     listDebits: state.debits.listDebits,
+    newDebit: state.debits.newDebit,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    saveDebit: (debit) => dispatch(actionSaveDebit(debit)),
+    newDebitButton: () => dispatch(actionNewDebit()),
+    sendDebtor: (id) =>dispatch(actionSendDebtor(id)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Content);
