@@ -1,8 +1,10 @@
+main {
+  display: flex;
+  justify-content: flex-start;
+
+}
 .content {
 display: flex;
-align-items: flex-start;
-
-padding: 15px;
 }
 
 .list-clients {
@@ -11,18 +13,72 @@ padding: 15px;
 }
 
 .form {
-  border: 1px solid black;
-  margin-left: 60px;
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 400px;
+  margin-left: 10%;
 }
+
+.form-new-debit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-new-debit label {
+  padding: 4px;
+  width: 190px;
+}
+.form-new-debit label input {
+  width: 182px;
+}
+
 
 .divida {
+  background-color: #E8f1f2;
+  text-align: center;
   border: 1px solid black;
-  margin: 10px;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 25px;
 }
 
-.box-debit-client {
+.divida:hover {
+font-size: 17px;
+}
+
+.container-debit-client {
+  margin: 25px;
+  margin-left: 10%;
+}
+.box-debit-client{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box-debit {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+  border-radius: 25px;
+  max-width: 300px;
+}
+
+.box-list-clients {
+  background-color: #1b98e0;
   border: 1px solid black;
-  margin: 10px;
+  margin-left: 50px;
+  padding: 15px;
+  border-radius: 25px;
+  width: 350px;
+}
+
+.box-list-clients h1 {
+  text-align: center;
 }
 
 .name-debtor {
@@ -30,5 +86,39 @@ padding: 15px;
 }
 
 .debit {
+border: 1px solid black;
+padding: 25px;
+border-radius: 25px;
+
+}
+
+.debit h5 {
+  line-height: 25px;
+}
+
+.edit-debit {
+background-color: #1b98e0;
+padding: 25px;
+width: 195px;
+border-radius: 25px;
+}
+
+.name-debit {
   margin: 15px;
+}
+
+.btn-new {
+  align-self: flex-start;
+  margin-top: 20px;
+  width: 70px;
+  font-size: 18px;
+}
+
+
+button {
+  border-radius: 25px;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  background-color: #13293D;
+  color: #e8f1f2;
 }

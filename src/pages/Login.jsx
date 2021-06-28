@@ -24,7 +24,7 @@ class Login extends React.Component {
 
     async handleSubmit(e) {
         e.preventDefault();
-        const { saveUser,  getDebits } = this.props;
+        const { saveUser, getDebits } = this.props;
         const { nome, email } = this.state;
         saveUser(nome, email);
         getDebits();
@@ -37,7 +37,8 @@ class Login extends React.Component {
 
         return (
             <div className="formContainer">
-                <form onSubmit={this.handleSubmit}>
+                <form className="form-login" onSubmit={this.handleSubmit}>
+                    <h1 className="login-debits">Controle de Débitos</h1>
                     <h1 className="login">Login</h1>
                     <label className="nome" htmlFor="input-player-name">
                         <input

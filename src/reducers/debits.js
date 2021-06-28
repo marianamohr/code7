@@ -1,4 +1,4 @@
-import { SAVE_LIST_DEBITS, NEW_DEBIT, SEND_DEBTOR } from '../actions/types';
+import { SAVE_LIST_DEBITS, NEW_DEBIT, SEND_DEBTOR, UPDATE_DEBIT } from '../actions/types';
 
 const INITIAL_STATE = {
   listDebits: [],
@@ -24,6 +24,11 @@ const debits = (state = INITIAL_STATE, { type, payload }) => {
         id: payload.id,
         newDebit: false,
       };
+      case UPDATE_DEBIT:
+        console.log(payload.data);
+        return {
+          ...state,
+        };
     default:
       return state;
   }

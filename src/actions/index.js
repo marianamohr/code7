@@ -5,9 +5,10 @@ import {
   NEW_DEBIT,
   SEND_DEBTOR,
   DELETE_DEBIT,
+  UPDATE_DEBIT,
 
 } from './types';
-import { apiUserRequest, apiDebitSave, apiGetDebits, apiDeleteDebit } from '../services/api';
+import { apiUserRequest, apiDebitSave, apiGetDebits, apiDeleteDebit, apiUpdateDebit} from '../services/api';
 
 
 export const actionFetchUsers = (nome, email) => (dispatch) => (
@@ -30,6 +31,15 @@ export const actionSaveDebit = (debit) => (dispatch) => (
         data,
       },
     })));
+
+    export const actionUpdateDebit = (debit) => (dispatch) => (
+      apiUpdateDebit(debit)
+        .then((data) => dispatch({
+          type: UPDATE_DEBIT,
+          payload: {
+            data,
+          },
+        })));
 
 export const actionGetDebits = () => (dispatch) => (
   apiGetDebits()

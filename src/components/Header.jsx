@@ -7,8 +7,9 @@ class Header extends Component {
         const { nome, email } = this.props;
         return (
             <header>
-                <h4  className="player" >{nome}</h4>
-                <h4  className="email">{email}</h4>
+                <img  className="img-header" alt="img" src="https://image.flaticon.com/icons/png/512/31/31684.png"/>
+                <h4  className="player" >{`Nome: ${nome}`}</h4>
+                <h4  className="email">{`Email: ${email}`}</h4>
             </header>
         )
     }

@@ -34,7 +34,7 @@ class Form extends Component {
         return (
             <div className="form">
                 <h1>Form</h1>
-                <form>
+                <form className="form-new-debit">
                     <label>
                         Cliente:
                <select
