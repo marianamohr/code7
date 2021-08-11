@@ -16,7 +16,7 @@ class Content extends Component {
             <main>
                 <div className="content">
                     <div className="box-list-clients">
-                        <h1>Devedores</h1>
+                        <h1>Os Devedores</h1>
                         <ul className="list-clients">
 
                             {listUsers.map(user => {
